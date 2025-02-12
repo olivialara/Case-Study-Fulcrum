@@ -10,7 +10,11 @@ import json
 
 st.title("Fulcrum Case Study: POMS")
 # st.header("Search By Punk ID")
-st.subheader("Data visualizations to summarize POMS policies.")
+st.subheader("POMS Data Visualizations")
+st.write("Fulcrum gives AI-Powered products to insurance brokerages. In this case study, \
+         I created some data visualizations for one of Fulcrum's current clients, POMS. \
+         The data used to generate these visualizations are completely random and only \
+         used for visualization purposes.")
 
 #image = Image.open('images/cryptopunks-image.jpg')
 
