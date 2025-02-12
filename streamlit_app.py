@@ -212,8 +212,64 @@ def graph_binder_quote_differences():
 
     return fig
 
+def graph_lapse_rate():
+    data = {'Insurance Type': ['Auto', 'Commercial', 'Life', 'Home'],
+        'Percentage': [.67, .42, .31, .25],
+        'Format': ['67%','42%', '31%', '25%'],
+       }
+    df = pd.DataFrame(data) 
+
+    fig = px.bar(df, 
+             x= "Insurance Type",
+             y= "Percentage",
+             text = 'Format',
+             color_discrete_sequence = ['#056374'],
+             title = "Lapse Rates<br><sup>*Average Lapse Rate Across All Policies Indicated by Dotted Line</sup>")
+            
+    fig.update_layout(  yaxis=dict(tickformat=".0%"), yaxis_title='% of Policies Not Renewed', height=400)
+
+    fig.update_traces(
+    hovertemplate='<b>Insurance Type: %{x}</b><br>Lapse Rate: %{text}'
+    )
+    fig.add_hline(y=.4125, line_width=2, line_dash='dash')
+
+    return fig
+
+def graph_conversion_funnel():
+    data = dict(
+    number=[ 3392, 2056, 1511, 1044],
+    stage=["Leads Generated","Quotes Provided", "Policies Generated", "Policies Approved"])
+
+# fig = px.funnel(data, x='number', y='stage', color = 'stage', 
+# color_discrete_sequence =  ["#f7862b", '#738738','#dc3828',"#056374"], labels={'stage':'Funnel Step'})
+
+    fig = go.Figure(go.Funnel(
+    y = data['stage'],
+    x = data['number'],
+    text = data['stage'],
+    textposition = "inside",
+    #textinfo = "value+percent initial",
+    #opacity = 0.65, 
+    marker = {"color": ["#056374", '#dc3828', '#738738', "#f7862b"],
+    #"line": {"width": [4, 2, 2, 3, 1, 1], "color": ["wheat", "wheat", "blue", "wheat", "wheat"]}
+             },
+    connector = {"line": {"color": "gray", "width": 3}})
+    )
+
+    fig.update_traces(
+        hovertemplate='<b>Step: %{y}</b><br>Count: %{x}'
+    )
+
+    fig.update_layout(title = 'Conversion Funnel',  yaxis=dict(tickformat=".0%"), height=400)
+
+    fig.update_yaxes(visible=False)
+
+    fig.show()
+
 
 st.write(graph_policy_breakdown_by_insurance_type())
 # st.write(graph_policy_breakdown_by_state())
 st.write(graph_monthly_trends())
 st.write(graph_binder_quote_differences())
+st.write(graph_lapse_rate())
+st.write(graph_conversion_funnel())
