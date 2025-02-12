@@ -231,7 +231,7 @@ def graph_lapse_rate():
     fig.update_traces(
     hovertemplate='<b>Insurance Type: %{x}</b><br>Lapse Rate: %{text}'
     )
-    fig.add_hline(y=.4125, line_width=2, line_dash='dash')
+    fig.add_hline(y=.4125, line_width=2, line_dash='dash', line_color='white')
 
     return fig
 
@@ -264,7 +264,7 @@ def graph_conversion_funnel():
 
     fig.update_yaxes(visible=False)
 
-    fig.show()
+    return fig
 
 
 st.write(graph_policy_breakdown_by_insurance_type())
