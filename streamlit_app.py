@@ -166,7 +166,49 @@ def graph_policy_breakdown_by_state():
                x=0.5))
     return fig
 
+def graph_binder_quote_differences():
+    data = {'Comparison': ['Over', 'Equal to', 'Under'],
+        'Binder': [1003, 22, 349],
+        'Quote': [790, 15, 569]
+       }
+
+    df = pd.DataFrame(data)
+
+    fig = make_subplots(rows=1, cols=2, 
+                    specs=[[{"type": "pie"}, 
+                            {"type": "pie"}]], 
+                    subplot_titles = ("Policy vs Binder Amount", "Policy vs Quote Amount"
+                                     ))
+
+    fig.add_trace(go.Pie(values = df['Binder'],
+                            labels = df['Comparison'],
+                            domain = dict(x=[0, 0.5]),
+                            name = "x",
+                            marker ={'colors':['#056374', '#dc3828', '#738738']}
+                            ),
+                            row = 1, col = 1)
+
+    fig.add_trace(go.Pie(values = df['Quote'],
+                            labels = df['Comparison'],
+                            domain = dict(x=[0.5, 1]),
+                            name = "x",
+                            marker ={'colors':['#056374', '#dc3828', '#738738']}
+                            ),
+                            row = 1, col = 2)
+
+    fig.update_traces(
+        hovertemplate='Count of Policies <b>%{label}</b> Quote Amount: %{value}'
+    )
+
+    fig.update_layout(title = 'Binder/Quote Differences', 
+                    title_x=.5, 
+                    height=400
+                    )
+
+    fig.show() 
+
 
 st.write(graph_policy_breakdown_by_insurance_type())
-st.write(graph_policy_breakdown_by_state())
+# st.write(graph_policy_breakdown_by_state())
 st.write(graph_monthly_trends())
+st.write(graph_binder_quote_differences())
