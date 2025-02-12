@@ -11,7 +11,7 @@ import json
 st.title("Fulcrum Case Study: POMS")
 # st.header("Search By Punk ID")
 st.subheader("POMS Data Visualizations")
-st.write("Fulcrum gives AI-Powered products to insurance brokerages. In this case study, \
+st.write("[Fulcrum](https://www.withfulcrum.com/) gives AI-Powered products to insurance brokerages. In this case study, \
          I created some data visualizations for one of Fulcrum's current clients, POMS. \
          The data used to generate these visualizations are completely random and only \
          used for visualization purposes.")
