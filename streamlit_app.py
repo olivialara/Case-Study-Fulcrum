@@ -11,8 +11,9 @@ import json
 st.title("Fulcrum Case Study: POMS")
 # st.header("Search By Punk ID")
 st.subheader("Policy Data Visualizations")
-st.write("[Fulcrum](https://www.withfulcrum.com/) gives AI-Powered products to insurance brokerages. In this case study, \
-         I created some policy data visualizations for one of Fulcrum's current clients, [POMS](https://www.pomsassoc.com/). \
+st.write("[Fulcrum](https://www.withfulcrum.com/) gives AI-Powered products to insurance brokerages. One feature they offer \
+         is the ability to summarize active policies for their accounts. In this case study, \
+         I created some policy data visualizations for one of Fulcrum's current accounts, [POMS](https://www.pomsassoc.com/). \
          The data used to generate these visualizations are completely random and only \
          used for visualization purposes.")
 
@@ -70,7 +71,7 @@ def graph_monthly_trends():
     ))
 
     fig.update_layout(title = 'Monthly Trends', 
-                  title_x=.5, 
+                  #title_x=.5, 
                   xaxis_title="Month", 
                   yaxis_title="New Policies Generated",
                   hovermode='x unified',
