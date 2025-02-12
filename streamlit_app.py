@@ -8,12 +8,41 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import json
 
-st.title("Fulcrum Case Study: POMS")
+st.title("Fulcrum Case Study")
 # st.header("Search By Punk ID")
-st.subheader("Policy Data Visualizations")
-st.write("[Fulcrum](https://www.withfulcrum.com/) gives AI-Powered products to insurance brokerages. One feature they offer \
+st.subheader("AI Chatbot: Policy Proposal Help")
+st.write("[Fulcrum](https://www.withfulcrum.com/) gives AI-Powered products to insurance brokerages. They give clients \
+          the ability ask questions on generated and active policies. Inspired by such work, I have created a simple chatbot \
+         built to help user understand a proposed policy and ask questions on it.")
+
+# Initialize chat history
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+# Display chat messages from history on app rerun
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
+# React to user input
+if prompt := st.chat_input("What is up?"):
+    # Display user message in chat message container
+    st.chat_message("user").markdown(prompt)
+    # Add user message to chat history
+    st.session_state.messages.append({"role": "user", "content": prompt})
+
+    response = f"Echo: {prompt}"
+    # Display assistant response in chat message container
+    with st.chat_message("assistant"):
+        st.markdown(response)
+    # Add assistant response to chat history
+    st.session_state.messages.append({"role": "assistant", "content": response})
+         
+
+st.subheader("Policy Data Visualizations: POMS")
+st.write("Another feature Fulcrum offers \
          is the ability to summarize active policies for their accounts. In this case study, \
-         I created some policy data visualizations for one of Fulcrum's current accounts, [POMS](https://www.pomsassoc.com/). \
+         I created some policy data visualizations for one of Fulcrum's current clinets, [POMS](https://www.pomsassoc.com/). \
          The data used to generate these visualizations are completely random and only \
          used for visualization purposes.")
 
