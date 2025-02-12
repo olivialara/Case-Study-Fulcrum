@@ -7,13 +7,14 @@ import plotly.io as pio
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import json
+import openai
 
 st.title("Fulcrum Case Study")
 # st.header("Search By Punk ID")
 st.subheader("AI Chatbot: Policy Proposal Help")
 st.write("[Fulcrum](https://www.withfulcrum.com/) gives AI-Powered products to insurance brokerages. They give clients \
           the ability ask questions on generated and active policies. Inspired by such work, I have created a simple chatbot \
-         built to help user understand a proposed policy and ask questions on it.")
+         built to help users understand commercial policy proposals and ask questions on it.")
 
 # Initialize chat history
 if "messages" not in st.session_state:
