@@ -33,7 +33,7 @@ def graph_policy_breakdown_by_insurance_type():
              color_discrete_sequence = ['#056374']
             )
             
-    fig.update_layout(title = 'Policy Breakdown', title_x=.5, height=400)
+    fig.update_layout(title = 'Policy Breakdown', height=400)
 
     fig.update_traces(
     hovertemplate='<b>Insurance Type: %{x}</b><br>Count: %{y}<br>Percentage: %{text}'
@@ -166,8 +166,8 @@ def graph_policy_breakdown_by_state():
 
     fig.update_layout(
         title=dict(text="Active Policies by State", 
-               #font=dict(size=18), 
-               x=0.5))
+               #font=dict(size=18)
+               ))
     return fig
 
 def graph_binder_quote_differences():
@@ -205,7 +205,7 @@ def graph_binder_quote_differences():
     )
 
     fig.update_layout(title = 'Binder/Quote Differences', 
-                    title_x=.5, 
+                    #title_x=.5, 
                     height=400
                     )
 
