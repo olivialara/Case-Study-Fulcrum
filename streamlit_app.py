@@ -75,6 +75,7 @@ def graph_monthly_trends():
     return fig
 
 def graph_policy_breakdown_by_state():
+    pio.templates.default = "plotly_dark"
     states = pd.read_csv('insurance-policy-count-by-state.csv') 
     code = {'Alabama': 'AL',
         'Alaska': 'AK',
@@ -142,18 +143,18 @@ def graph_policy_breakdown_by_state():
         width=1200
         )
 
-    fig.add_scattergeo(
-        locations=states['Code'],
-        locationmode='USA-states',
-        text=states['2024'],
-        hoverinfo='skip',
-        mode='text',
-        showlegend=False
-        )
+    # fig.add_scattergeo(
+    #     locations=states['Code'],
+    #     locationmode='USA-states',
+    #     text=states['2024'],
+    #     hoverinfo='skip',
+    #     mode='text',
+    #     showlegend=False
+    #     )
 
     fig.update_layout(font=dict(
         size=10, 
-        #color="black"
+        color="black"
         )),
 
 
