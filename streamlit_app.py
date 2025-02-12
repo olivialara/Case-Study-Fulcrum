@@ -205,7 +205,7 @@ def graph_binder_quote_differences():
                     height=400
                     )
 
-    fig.show() 
+    return fig
 
 
 st.write(graph_policy_breakdown_by_insurance_type())
